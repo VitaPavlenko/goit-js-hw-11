@@ -25,6 +25,7 @@ async function clickButton() {
   }
   const markup = template(data.hits);
   gallery.insertAdjacentHTML('beforeend', markup);
+  let lightbox = new SimpleLightbox('.gallery a');
 }
 
 form.addEventListener('submit', formSubmit);
@@ -59,6 +60,7 @@ async function formSubmit(e) {
   }
 
   const markup = template(data.hits);
+
   gallery.insertAdjacentHTML('beforeend', markup);
   let lightbox = new SimpleLightbox('.gallery a');
 }
