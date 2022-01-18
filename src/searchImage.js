@@ -1,4 +1,6 @@
 import axios from 'axios';
+const BASE_URL = 'https://pixabay.com/api/';
+const Key = '25274057-dba1b364b326199f79c25f588';
 
 export default class Feach {
   constructor() {
@@ -6,12 +8,14 @@ export default class Feach {
     this.inputEl = '';
   }
 
-  searchImage() {
-    return fetch(
-      `https://pixabay.com/api/?key=25274057-dba1b364b326199f79c25f588&q=${this.inputEl}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${this.page}`,
-    ).then(response => {
-      return response.json();
-    });
+  async searchImage() {
+    const response = await axios.get(
+      `${BASE_URL}?key=${Key}&q=${this.inputEl}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${this.page}`,
+    );
+    console.log(response);
+    const users = await response.data;
+
+    return users;
   }
 
   increment() {
